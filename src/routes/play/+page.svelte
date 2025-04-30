@@ -3,16 +3,17 @@
 
     let player1Anchor: HTMLDivElement;
     let player2Anchor: HTMLDivElement;
+    let player3Anchor: HTMLDivElement;
 
     $effect(() => {
         //first h5p
         const options = {
-            id: "po",
             h5pJsonPath: "/h5p-test",
             frameJs: "/vendor/h5p/frame.bundle.js",
             frameCss: "/vendor/h5p/styles/h5p.css",
             export: true,
             icon: true,
+            frame: true,
             downloadUrl: "/h5p-test.h5p",
         };
 
@@ -20,7 +21,6 @@
 
         //second h5p
         const options2 = {
-            id: "some",
             h5pJsonPath: "/course-presentation-one",
             frameJs: "/vendor/h5p/frame.bundle.js",
             frameCss: "/vendor/h5p/styles/h5p.css",
@@ -28,14 +28,30 @@
         };
 
         new H5P(player2Anchor, options2);
+
+        //third h5p
+        const options3 = {
+            h5pJsonPath: "/fill-in-the-blanks-837",
+            frameJs: "/vendor/h5p/frame.bundle.js",
+            frameCss: "/vendor/h5p/styles/h5p.css",
+            export: true,
+            frame: true, 
+            downloadUrl: "/fill-in-the-blanks-837.h5p",
+        };
+
+        new H5P(player3Anchor, options3);
     });
 </script>
 
 <h1>Welcome to Play Page</h1>
 
-<a href="/">Home</a>
+<div style="display: flex; gap: 8px">
+    <a href="/">Home</a>
+    <a href="/chapters">Chapters</a>
+</div>
 
-<a href="/chapters">Chapters</a>
+<div style="padding: 20px;">Please wait for content to load</div>
 
-<div bind:this={player1Anchor}></div>
-<div bind:this={player2Anchor}></div>
+<div bind:this={player1Anchor} style="padding: 40px; margin-bottom: 16px; border: 1px solid;"></div>
+<div bind:this={player2Anchor} style="padding: 40px; margin-bottom: 16px; border: 1px solid;"></div>
+<div bind:this={player3Anchor} style="padding: 40px; margin-bottom: 16px; border: 1px solid;"></div>
